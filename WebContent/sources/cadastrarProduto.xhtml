@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+</h:head>
+<h:body>
+<h:button value="Index" outcome="/index" />
+	<h3>Cadastar Novo Produto</h3>
+	<div>
+	  <h:form id="criarProduto">
+		<label>Categoria</label>
+	    	<h:selectOneMenu value="#{produto.categoria.id}">
+	    		<f:selectItems var="categoria" value="#{appController.listarCategorias()}" 
+	    			itemLabel="#{categoria.nome}" itemValue="#{categoria.id}"></f:selectItems>
+	    	</h:selectOneMenu>
+		<label>Nome</label>
+		<h:inputText value="#{produto.nome}" />
+		<label>Largura</label>
+		<h:inputText value="#{produto.largura}"/>
+		<label>Comprimento</label>
+		<h:inputText value="#{produto.comprimento}" />
+		<label>Altura</label>
+		<h:inputText value="#{produto.altura}" />
+		<label>Preço</label>
+		<h:inputText value="#{produto.preco}" />
+		<label>Quantidade Estoque</label>
+		<h:inputText value="#{produto.quantidade}" />
+	  	<h:commandButton action="#{appController.cadastrarProduto(produto)}" value="Salvar" />
+	  </h:form>
+	</div>
+</h:body>
+</html>

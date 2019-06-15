@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+</h:head>
+<h:body>
+	<h:button value="Index" outcome="/index" />
+	<h3>Cadastar Nova Categoria</h3>
+	<div>
+	  <h:form id="criarCategoria">
+		<label>Nome</label>
+		<h:inputText id="nomeCategoria" value="#{categoria.nome}" />
+		<label>Descrição</label>
+		<h:inputText id="slugCategoria" value="#{categoria.descricao}" />
+	  	<h:commandButton action="#{appController.cadastrarCategoria(categoria)}" value="Salvar" />
+	  </h:form>
+	</div>
+</h:body>
+</html>

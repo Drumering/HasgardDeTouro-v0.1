@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet name="style.css" library="css" />
+	<h:outputStylesheet name="template.css" library="css" />
+</h:head>
+<body>
+	<h:button value="Cadastrar Categoria" outcome="source/cadastrarCategoria" />
+	<h:button value="Cadastrar Produto" outcome="source/cadastrarProduto" />
+	<h:button value="Preços dos Concorrentes" outcome="source/listarPesquisaMercado" />
+	<section id="geral">
+	<div class="container">
+		<section>
+		<div class="widget">
+			<div class="widget-title">
+				<div class="widget-title-text">Latest Offers</div>
+				<div class="widget-title-bar"></div>
+			</div>
+			<div class="widget-body flex">
+				<ui:repeat var="item" value="#{appController.listarProduto()}">
+					<article> <a href="source/carrinho.xhtml">
+						<div class="news-data">
+							<div class="news-posted-at">30 DEC 18</div>
+							<div class="news-comments">2</div>
+						</div>
+						<div class="news-thumbnail">
+							<img src="resources/images/img1.jpg" />
+						</div>
+						<div class="news-title">
+							<h:outputText value="#{item.nome}" />
+						</div>
+						<div class="news-resume">
+							O melhor colchão do mundo, o mais puto com uma altura de
+							<h:outputText value="#{item.altura}" />
+							de pura fofura e uma largura de
+							<h:outputText value="#{item.largura}" />
+							para a família toda. Por Apenas R$
+							<h:outputText value="#{item.preco}" />
+						</div>
+					</a> </article>
+				</ui:repeat>
+			</div>
+		</div>
+		</section>
+		<aside>
+		<div class="widget">
+			<div class="widget-title">
+				<div class="widget-title-text">Departments</div>
+				<div class="widget-title-bar"></div>
+			</div>
+			<div class="widget-body flex">
+				<div class="widget-body-content"></div>
+				<div class="widget-body-content"></div>
+				<div class="widget-body-content"></div>
+				<div class="widget-body-content"></div>
+				<div class="widget-body-content"></div>
+				<div class="widget-body-content"></div>
+			</div>
+		</div>
+		<div class="widget">
+			<div class="widget-title">
+				<div class="widget-title-text">Make An Appointment</div>
+				<div class="widget-title-bar"></div>
+			</div>
+			<div class="widget-body appointment">
+				<div class="appointment-middle">Mauris adipiscing mauris
+					fringilla turpis interdum sed pulvinar nisi malesuada individual</div>
+				<div class="widget-body-center">
+					<div class="phone-icon">
+						<img src="assets/images/telephone.png" width="20" height="20"
+							border="0" />
+					</div>
+					<div>By Phone +11 555 666 777</div>
+				</div>
+				<div class="widget-body-center">
+					<div class="phone-icon">
+						<img src="assets/images/telephone.png" width="20" height="20"
+							border="0" />
+					</div>
+					<div>
+						By E-mail <a href="">medicenter@mail.com</a>
+					</div>
+				</div>
+				<div class="widget-body-center">
+					<div class="phone-icon">
+						<img src="assets/images/telephone.png" width="20" height="20"
+							border="0" />
+					</div>
+					<div>
+						Or fill in the <a href="">form</a> on our contact the page.
+					</div>
+				</div>
+			</div>
+		</div>
+		</aside>
+	</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:button value="Index" outcome="/index" />
+	<h3>Lista de Preços dos Concorrentes</h3>
+	<h:form>
+		<h:dataTable var="spider" value="#{appController.listarPesquisaConcorrentes()}" styleClass="dataTable">
+	    	<h:column>
+	        	<f:facet name="header">Nome</f:facet>
+	             #{spider.nome}
+	         </h:column>
+	         <h:column>
+	        	<f:facet name="header">Dimensões</f:facet>
+	             #{spider.dimensoes}
+	         </h:column>
+	         <h:column>
+	        	<f:facet name="header">Preços</f:facet>
+	             #{spider.preco}
+	         </h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
