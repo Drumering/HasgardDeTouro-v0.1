@@ -20,9 +20,7 @@ create table produto(
 
 create table carrinho (
     idCarrinho number(5) not null,
-    proID number(5) not null,
-    constraint carrinho_pk primary key (idCarrinho),
-    constraint carrinho_pro_fk foreign key (proID) references produto(proID)
+    constraint carrinho_pk primary key (idCarrinho)
 );
 
 create table carrinho_itens (
