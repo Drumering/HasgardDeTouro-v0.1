@@ -13,7 +13,7 @@ public final class CarrinhoQuery {
 			+ "c.SLUGCATE FROM carrinho car join produto p on car.proID = p.proID join categoria c on p.IDCATE = c.IDCATE "
 			+ "WHERE car.IDCARRINHO = ?";
 	
-	public static final String INSERT = "INSERT INTO carrinho (idCarrinho, proID, quantidade) "
+	public static final String INSERT = "INSERT INTO carrinho (idCarrinho) "
 			+ "VALUES (carrinhoSEQ.nextval,?,?)";
 	
 	public static final String DELETE = "DELETE FROM carrinho WHERE idCarrinho = ?";

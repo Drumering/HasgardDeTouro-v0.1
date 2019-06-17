@@ -2,6 +2,7 @@
     <wb-module deploy-name="HasgardDeTouro-v0.1">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/" source-path="/src/br/com/opet/util"/>
         <property name="context-root" value="HasgardDeTouro-v0.1"/>
         <property name="java-output-path" value="/HasgardDeTouro-v0.1/build/classes"/>
     </wb-module>

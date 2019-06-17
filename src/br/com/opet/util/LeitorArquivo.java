@@ -2,8 +2,9 @@ package br.com.opet.util;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +12,9 @@ import java.util.List;
 public class LeitorArquivo {
 	
 	private ArrayList<String> lerArquivoSpider(String arquivo) {
-		ArrayList<String> linhasLidas = new ArrayList<>();
-		try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
+		InputStream inputStream = getClass().getResourceAsStream(arquivo);
+		ArrayList<String> linhasLidas = new ArrayList<String>();
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 			String novaLinha = "";
 			while ((novaLinha = reader.readLine()) != null) {
 				linhasLidas.add(novaLinha);
@@ -27,7 +29,7 @@ public class LeitorArquivo {
 	}
 	
 	public ArrayList<SpiderReader> formatarArquivoSpider(String arquivo) {
-		ArrayList<SpiderReader> spiders = new ArrayList<>();
+		ArrayList<SpiderReader> spiders = new ArrayList<SpiderReader>();
 		ArrayList<String> linhasLidas = lerArquivoSpider(arquivo);
 		
 		for (String string : linhasLidas) {
