@@ -21,6 +21,7 @@ public class AppController {
 	}
 
 	public String ClickCadastrarCarrinho(Produto p, int quantidade) {
+		
 		return "/carrinho.xhtml";
 	}
 	
