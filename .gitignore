@@ -5,7 +5,7 @@
 ### Java-Web ###
 ## ignoring target file
 target/
-build/
+/build/
 # Eclipse Core      
 .project
 .tern-project
