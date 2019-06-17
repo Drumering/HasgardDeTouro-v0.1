@@ -1,0 +1,15 @@
+
+# Created by https://www.gitignore.io/api/java-web
+# Edit at https://www.gitignore.io/?templates=java-web
+
+### Java-Web ###
+## ignoring target file
+target/
+build/
+# Eclipse Core      
+.project
+.tern-project
+
+# JDT-specific (Eclipse Java Development Tools)     
+.classpath
+# End of https://www.gitignore.io/api/java-web
