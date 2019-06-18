@@ -23,7 +23,7 @@ input[type=submit]:hover {
 	background-color: #45a049;
 }
 
-.button{
+.button {
 	width: 100%;
 	background-color: #4CAF50;
 	color: white;
@@ -34,7 +34,7 @@ input[type=submit]:hover {
 	cursor: pointer;
 }
 
-form {
+.formGeral {
 	width: 50%;
 }
 

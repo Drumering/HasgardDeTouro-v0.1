@@ -11,7 +11,7 @@
 <h:body>
 	<h:button value="Index" outcome="/index" />
 	<h3>Lista de Categorias</h3>
-	<h:form>
+	<h:form class="formGeral">
 		<h:dataTable var="categoria" value="#{appController.listarCategorias()}" styleClass="dataTable">
 	    	<h:column>
 	        	<f:facet name="header">Nome</f:facet>

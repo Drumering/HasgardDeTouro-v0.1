@@ -12,7 +12,7 @@ import br.com.opet.util.SpiderReader;
 public class AppController {
 	public String cadastrarProduto(Produto produto) {
 		produto.cadastrar();
-		return "/index.xhtml";
+		return "../index.xhtml";
 	}
 	
 	public ArrayList<Produto> listarProduto() {
@@ -28,7 +28,7 @@ public class AppController {
 	
 	public String cadastrarCategoria(Categoria categoria) {
 		categoria.cadastrar();
-		return "/index.xhtml";
+		return "index.xhtml";
 	}
 	
 	public ArrayList<Categoria> listarCategorias() {

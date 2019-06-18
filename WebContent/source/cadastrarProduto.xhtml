@@ -35,7 +35,7 @@
 	<center>
 		<h3>Cadastar Novo Produto</h3>
 	<div>
-	  <h:form id="criarProduto">
+	  <h:form class="formGeral" id="criarProduto">
 		<label>Categoria</label>
 	    	<h:selectOneMenu value="#{produto.categoria.id}">
 	    		<f:selectItems var="categoria" value="#{appController.listarCategorias()}" 

@@ -28,13 +28,20 @@ public class CarrinhoDAO {
 			carrinho.setId(carrinhoID);
 		}
 		
+		rs.close();
+
+		if (rowAffected == 0) {
+			conn.rollback();
+			return;
+		}
+		
 		PreparedStatement stmtItens = conn.prepareStatement(CarrinhoQuery.INSERT_ITENS);
 		stmtItens.setInt(1, carrinho.getId());
 		stmtItens.setInt(2, carrinho.getProdutoId());
 		stmtItens.setInt(3, carrinho.getQuantidade());
 		
-		rs.close();
-
+		rowAffected = stmtItens.executeUpdate();
+		
 		if (rowAffected == 0) {
 			conn.rollback();
 			return;
