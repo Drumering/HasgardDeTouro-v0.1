@@ -6,9 +6,7 @@
 ## ignoring target file
 
 build/
-/build/
-build/classes/
-/build/classes/
+
 HasgardDeTouro-v0.1/build/classes
 # Eclipse Core      
 .project
