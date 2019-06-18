@@ -28,6 +28,7 @@
 							<li><a href="source/cadastrarCategoria.xhtml">Cadastrar Categoria</a></li>
 							<li><a href="source/cadastrarProduto.xhtml">Cadastrar Produto</a> </li>
 							<li><a href="source/listarPesquisaMercado.xhtml">Preços dos Concorrentes</a> </li>
+							<li><a href="source/carrinho.xhtml">Meu Carrinho</a> </li>
 					</ul>
 				</nav>
 			</div>
@@ -45,7 +46,7 @@
 						<ui:repeat var="item" value="#{appController.listarProduto()}">
 							<article>
 								<h:form id="addItem">
-									<h:commandLink action="#{appController.listarAction()}">
+									<h:commandLink action="#{appController.cadastrarCarrinho(item, 1)}">
 										<div class="news-data">
 											<div class="news-posted-at">30 DEC 18</div>
 											<div class="news-comments">2</div>

@@ -2,8 +2,8 @@ package br.com.opet.controller;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
+import br.com.opet.model.Carrinho;
 import br.com.opet.model.Categoria;
 import br.com.opet.model.Produto;
 import br.com.opet.util.SpiderReader;
@@ -20,8 +20,10 @@ public class AppController {
 		return produto.listar();
 	}
 
-	public String ClickCadastrarCarrinho(Produto p, int quantidade) {
-		return "/carrinho.xhtml";
+	public void cadastrarCarrinho(Produto produto, int quantidade) {
+		Carrinho carrinho = new Carrinho(produto,quantidade);
+		carrinho.cadastrar();
+//		return "/carrinho.xhtml";
 	}
 	
 	public String cadastrarCategoria(Categoria categoria) {
@@ -38,10 +40,6 @@ public class AppController {
 		SpiderReader listarConcorrentes = new SpiderReader();
 //		return listarConcorrentes.lerArquivoSpider("C:/Users/admin/eclipse-workspace/HasgardDeTouro-v0.1/dadosWebCrawler.txt");
 		return listarConcorrentes.lerArquivoSpider("dadosWebCrawler.txt");
-	}
-	
-	public String listarAction() {
-		return "/index.xhtml";
 	}
 	
 //	public ArrayList<String> listarPesquisaConcorrentes() {

@@ -26,6 +26,7 @@ create table carrinho (
 create table carrinho_itens (
     idCarrinho number(5) not null,
     proID number(5) not null,
+    quantidade number(9) not null,
     constraint carrinho_itens_fk foreign key (idCarrinho) references carrinho(idCarrinho),
     constraint carrinho_proitem_fk foreign key (proID) references produto(proID)
 );

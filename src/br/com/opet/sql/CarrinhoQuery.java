@@ -14,7 +14,10 @@ public final class CarrinhoQuery {
 			+ "WHERE car.IDCARRINHO = ?";
 	
 	public static final String INSERT = "INSERT INTO carrinho (idCarrinho) "
-			+ "VALUES (carrinhoSEQ.nextval,?,?)";
+			+ "VALUES (carrinhoSEQ.nextval)";
+	
+	public static final String INSERT_ITENS = "INSERT INTO carrinho_itens (idCarrinho,proId,quantidade) "
+			+ "VALUES (?,?,?)";
 	
 	public static final String DELETE = "DELETE FROM carrinho WHERE idCarrinho = ?";
 

@@ -17,8 +17,6 @@ public class CarrinhoDAO {
 		String generatedID[] = {"idCarrinho"};
 		Connection conn = Conexao.getConexao();
 		PreparedStatement stmt = conn.prepareStatement(CarrinhoQuery.INSERT, generatedID);
-		stmt.setInt(1, carrinho.getProdutoId());
-		stmt.setInt(2, carrinho.getQuantidade());
 		
 		conn.setAutoCommit(false);
 
@@ -28,7 +26,13 @@ public class CarrinhoDAO {
 		while(rs.next()) {
 			int carrinhoID = rs.getInt(1);
 			carrinho.setId(carrinhoID);
-		}		
+		}
+		
+		PreparedStatement stmtItens = conn.prepareStatement(CarrinhoQuery.INSERT_ITENS);
+		stmtItens.setInt(1, carrinho.getId());
+		stmtItens.setInt(2, carrinho.getProdutoId());
+		stmtItens.setInt(3, carrinho.getQuantidade());
+		
 		rs.close();
 
 		if (rowAffected == 0) {
@@ -39,6 +43,7 @@ public class CarrinhoDAO {
 		conn.commit();
 		conn.close();
 		stmt.close();
+		stmtItens.close();
 	}
 	
 	public void excluir(int id) throws SQLException {
