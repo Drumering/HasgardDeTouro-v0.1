@@ -1,14 +1,8 @@
 package br.com.opet.controller;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-
-import org.junit.platform.commons.function.Try;
+import javax.faces.bean.RequestScoped;
 
 import br.com.opet.model.Categoria;
 import br.com.opet.model.Produto;
@@ -44,6 +38,10 @@ public class AppController {
 		SpiderReader listarConcorrentes = new SpiderReader();
 //		return listarConcorrentes.lerArquivoSpider("C:/Users/admin/eclipse-workspace/HasgardDeTouro-v0.1/dadosWebCrawler.txt");
 		return listarConcorrentes.lerArquivoSpider("dadosWebCrawler.txt");
+	}
+	
+	public String listarAction() {
+		return "/index.xhtml";
 	}
 	
 //	public ArrayList<String> listarPesquisaConcorrentes() {

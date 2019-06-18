@@ -14,6 +14,8 @@ public class LeitorArquivo {
 	private ArrayList<String> lerArquivoSpider(String arquivo) {
 		InputStream inputStream = getClass().getResourceAsStream(arquivo);
 		ArrayList<String> linhasLidas = new ArrayList<String>();
+//		new InputStreamReader(inputStream)
+//		new FileReader(arquivo)
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 			String novaLinha = "";
 			while ((novaLinha = reader.readLine()) != null) {

@@ -9,44 +9,69 @@
 	<h:outputStylesheet name="template.css" library="css" />
 </h:head>
 <body>
-	<h:button value="Cadastrar Categoria" outcome="source/cadastrarCategoria" />
-	<h:button value="Cadastrar Produto" outcome="source/cadastrarProduto" />
-	<h:button value="Preços dos Concorrentes" outcome="source/listarPesquisaMercado" />
-	<section id="geral">
+	<header>
 		<div class="container">
-		<section>
-		<div class="widget">
-			<div class="widget-title">
-				<div class="widget-title-text">Latest Offers</div>
-				<div class="widget-title-bar"></div>
+			<div class="logo">
+				<a href="">
+					<img src="resources/images/carrinhoIcon.png" height="50px" width="50px"/>
+				</a>
 			</div>
-			<div class="widget-body flex">
-				<ui:repeat var="item" value="#{appController.listarProduto()}">
-					<article> <a href="source/carrinho.xhtml">
-						<div class="news-data">
-							<div class="news-posted-at">30 DEC 18</div>
-							<div class="news-comments">2</div>
-						</div>
-						<div class="news-thumbnail">
-							<img src="resources/images/img1.jpg" />
-						</div>
-						<div class="news-title">
-							<h:outputText value="#{item.nome}" />
-						</div>
-						<div class="news-resume">
-							O melhor colchão do mundo, o mais puto com uma altura de
-							<h:outputText value="#{item.altura}" />
-							de pura fofura e uma largura de
-							<h:outputText value="#{item.largura}" />
-							para a família toda. Por Apenas R$
-							<h:outputText value="#{item.preco}" />
-						</div>
-					</a> </article>
-				</ui:repeat>
+			<div class="menu">
+				<nav>
+					<div class="menu-mobile">
+						<div class="mm-line"></div>
+						<div class="mm-line"></div>
+						<div class="mm-line"></div>
+					</div>
+					<ul>
+							<li class="active"><a href="index.xhtml">HOME</a></li>
+							<li><a href="source/cadastrarCategoria.xhtml">Cadastrar Categoria</a></li>
+							<li><a href="source/cadastrarProduto.xhtml">Cadastrar Produto</a> </li>
+							<li><a href="source/listarPesquisaMercado.xhtml">Preços dos Concorrentes</a> </li>
+					</ul>
+				</nav>
 			</div>
 		</div>
-		</section>
-	</div>
+	</header>
+	<section id="geral">
+		<div class="container">
+			<section>
+				<div class="widget">
+					<div class="widget-title">
+						<div class="widget-title-text">Latest Offers</div>
+						<div class="widget-title-bar"></div>
+					</div>
+					<div class="widget-body flex">
+						<ui:repeat var="item" value="#{appController.listarProduto()}">
+							<article>
+								<h:form id="addItem">
+									<h:commandLink action="#{appController.listarAction()}">
+										<div class="news-data">
+											<div class="news-posted-at">30 DEC 18</div>
+											<div class="news-comments">2</div>
+										</div>
+										<div class="news-thumbnail">
+											<img src="resources/images/img1.jpg" />
+										</div>
+										<div class="news-title">
+											<h:outputText value="#{item.nome}" />
+										</div>
+										<div class="news-resume">
+											O melhor colchão do mundo, o mais puto com uma altura de
+											<h:outputText value="#{item.altura}" />
+											de pura fofura e uma largura de
+											<h:outputText value="#{item.largura}" />
+											para a família toda. Por Apenas R$
+											<h:outputText value="#{item.preco}" />
+										</div>
+									</h:commandLink>
+								</h:form>
+							</article>
+						</ui:repeat>
+					</div>
+				</div>
+			</section>
+		</div>
 	</section>
 </body>
 </html>

@@ -5,10 +5,36 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
+	<h:outputStylesheet name="style.css" library="css" />
+	<h:outputStylesheet name="template.css" library="css" />
 </h:head>
 <h:body>
-	<h:button value="Index" outcome="/index" />
-	<h3>Lista de Preços dos Concorrentes</h3>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a href="">
+					<img src="../resources/images/carrinhoIcon.png" height="50px" width="50px"/>
+				</a>
+			</div>
+			<div class="menu">
+				<nav>
+					<div class="menu-mobile">
+						<div class="mm-line"></div>
+						<div class="mm-line"></div>
+						<div class="mm-line"></div>
+					</div>
+					<ul>
+							<li><a href="../index.xhtml">HOME</a></li>
+							<li><a href="cadastrarCategoria.xhtml">Cadastrar Categoria</a></li>
+							<li><a href="cadastrarProduto.xhtml">Cadastrar Produto</a> </li>
+							<li class="active"><a href="listarPesquisaMercado.xhtml">Preços dos Concorrentes</a> </li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<center>
+		<h3>Lista de Preços dos Concorrentes</h3>
 	<h:form>
 		<h:dataTable var="spider" value="#{appController.listarPesquisaConcorrentes()}" styleClass="dataTable">
 	    	<h:column>
@@ -25,5 +51,6 @@
 	         </h:column>
 		</h:dataTable>
 	</h:form>
+	</center>
 </h:body>
 </html>
