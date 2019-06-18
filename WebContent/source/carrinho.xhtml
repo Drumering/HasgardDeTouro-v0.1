@@ -12,8 +12,7 @@
 	<header>
 		<div class="container">
 			<div class="logo">
-				<a href="">
-					<img src="../resources/images/carrinhoIcon.png" height="50px" width="50px"/>
+				<a href=""> <img src="../resources/images/carrinhoIcon.png"	height="50px" width="50px" />
 				</a>
 			</div>
 			<div class="menu">
@@ -24,11 +23,11 @@
 						<div class="mm-line"></div>
 					</div>
 					<ul>
-							<li><a href="../index.xhtml">HOME</a></li>
-							<li><a href="cadastrarCategoria.xhtml">Cadastrar Categoria</a></li>
-							<li><a href="cadastrarProduto.xhtml">Cadastrar Produto</a> </li>
-							<li><a href="listarPesquisaMercado.xhtml">Preços dos Concorrentes</a> </li>
-							<li class="active" ><a href="carrinho.xhtml">Meu Carrinho</a> </li>
+						<li><a href="../index.xhtml">HOME</a></li>
+						<li><a href="cadastrarCategoria.xhtml">Cadastrar Categoria</a></li>
+						<li><a href="cadastrarProduto.xhtml">Cadastrar Produto</a></li>
+						<li><a href="listarPesquisaMercado.xhtml">Preços dos Concorrentes</a></li>
+						<li class="active"><a href="carrinho.xhtml">Meu Carrinho</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -41,12 +40,11 @@
 			<div class="widget-title-bar"></div>
 		</div>
 		<div class="widget-body flex">
-			<div class="widget-body-content"></div>
-			<div class="widget-body-content"></div>
-			<div class="widget-body-content"></div>
-			<div class="widget-body-content"></div>
-			<div class="widget-body-content"></div>
-			<div class="widget-body-content"></div>
+			<ui:repeat var="produto" value="#{appController.listarCarrinhos()}">
+				<div class="widget-body-content">
+					<img src="../resources/images/img1.jpg" alt="" height="100%" width="100%"/>
+				</div>
+			</ui:repeat>
 		</div>
 	</div>
 	</aside>

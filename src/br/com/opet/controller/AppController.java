@@ -36,6 +36,11 @@ public class AppController {
 		return categoria.listar();
 	}
 	
+	public ArrayList<Carrinho> listarCarrinhos(){
+		Carrinho carrinho = new Carrinho();
+		return carrinho.listarCarrinhos();
+	}
+	
 	public ArrayList<SpiderReader> listarPesquisaConcorrentes() {
 		SpiderReader listarConcorrentes = new SpiderReader();
 //		return listarConcorrentes.lerArquivoSpider("C:/Users/admin/eclipse-workspace/HasgardDeTouro-v0.1/dadosWebCrawler.txt");
