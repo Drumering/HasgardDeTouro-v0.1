@@ -43,23 +43,6 @@ public class AppController {
 	
 	public ArrayList<SpiderReader> listarPesquisaConcorrentes() {
 		SpiderReader listarConcorrentes = new SpiderReader();
-//		return listarConcorrentes.lerArquivoSpider("C:/Users/admin/eclipse-workspace/HasgardDeTouro-v0.1/dadosWebCrawler.txt");
 		return listarConcorrentes.lerArquivoSpider("dadosWebCrawler.txt");
 	}
-	
-//	public ArrayList<String> listarPesquisaConcorrentes() {
-//		ArrayList<String> linhasLidas = new ArrayList<String>();
-//		try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\admin\\eclipse-workspace\\HasgardDeTouro-v0.1\\dadosWebCrawler.txt"))) {
-//			String novaLinha = "";
-//			while ((novaLinha = reader.readLine()) != null) {
-//				linhasLidas.add(novaLinha);
-//			}
-//			reader.close();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return linhasLidas;
-//	}
 }
