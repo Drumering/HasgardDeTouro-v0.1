@@ -27,14 +27,17 @@ public class CarrinhoDAO {
 			int carrinhoID = rs.getInt(1);
 			carrinho.setId(carrinhoID);
 		}
-		
 		rs.close();
 
 		if (rowAffected == 0) {
 			conn.rollback();
 			return;
 		}
-		
+		cadastrarItemCarrinho(carrinho, conn, stmt);
+	}
+
+	private void cadastrarItemCarrinho(Carrinho carrinho, Connection conn, PreparedStatement stmt) throws SQLException {
+		int rowAffected;
 		PreparedStatement stmtItens = conn.prepareStatement(CarrinhoQuery.INSERT_ITENS);
 		stmtItens.setInt(1, carrinho.getId());
 		stmtItens.setInt(2, carrinho.getProdutoId());

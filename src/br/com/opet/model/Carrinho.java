@@ -3,8 +3,13 @@ package br.com.opet.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import br.com.opet.dao.CarrinhoDAO;
 
+@ManagedBean
+@RequestScoped
 public class Carrinho extends CarrinhoDAO {
 	private int id;
 	private Produto produto;
