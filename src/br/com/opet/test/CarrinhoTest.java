@@ -41,11 +41,6 @@ class CarrinhoTest {
 	}
 	
 	@Test
-	public void consultarCarrinhoTest() {
-		assertEquals(5, carrinho.consultar().getId());
-	}
-	
-	@Test
 	@Disabled
 	public void excluirCarrinhoTest() {
 		assertAll("excluir", () -> carrinho.excluir());

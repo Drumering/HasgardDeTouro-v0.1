@@ -13,12 +13,16 @@ public final class CarrinhoQuery {
 			+ "c.SLUGCATE FROM carrinho car join produto p on car.proID = p.proID join categoria c on p.IDCATE = c.IDCATE "
 			+ "WHERE car.IDCARRINHO = ?";
 	
+	public static final String SELECT_ONE_ITEM = "select IDCARRINHO, PROID, QUANTIDADE from carrinho_itens WHERE idcarrinho = ?";
+	
 	public static final String INSERT = "INSERT INTO carrinho (idCarrinho) "
-			+ "VALUES (carrinhoSEQ.nextval)";
+			+ "VALUES (?)";
 	
 	public static final String INSERT_ITENS = "INSERT INTO carrinho_itens (idCarrinho,proId,quantidade) "
 			+ "VALUES (?,?,?)";
 	
 	public static final String DELETE = "DELETE FROM carrinho WHERE idCarrinho = ?";
+	
+	public static final String LOCALIZAR_ID = "SELECT carrinhoSEQ.nextval FROM dual";
 
 }

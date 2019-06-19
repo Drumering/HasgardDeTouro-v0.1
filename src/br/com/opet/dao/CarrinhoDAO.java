@@ -8,51 +8,51 @@ import java.util.ArrayList;
 import br.com.opet.conexao.Conexao;
 import br.com.opet.model.Carrinho;
 import br.com.opet.model.Categoria;
+import br.com.opet.model.ItensCarrinho;
 import br.com.opet.model.Produto;
 import br.com.opet.sql.CarrinhoQuery;
 
 public class CarrinhoDAO {
-	
+
 	public void cadastrar(Carrinho carrinho) throws SQLException {
-		String generatedID[] = {"idCarrinho"};
 		Connection conn = Conexao.getConexao();
-		PreparedStatement stmt = conn.prepareStatement(CarrinhoQuery.INSERT, generatedID);
-		
 		conn.setAutoCommit(false);
+		PreparedStatement stmt = null;
 
-		int rowAffected = stmt.executeUpdate();
-		ResultSet rs = stmt.getGeneratedKeys();
-		
-		while(rs.next()) {
-			int carrinhoID = rs.getInt(1);
-			carrinho.setId(carrinhoID);
-		}
-		
-		rs.close();
+		if (carrinho.getId() == 0) {
+			carrinho.setIdSession();
+			stmt = conn.prepareStatement(CarrinhoQuery.INSERT);
+			stmt.setInt(1, carrinho.getId());
 
-		if (rowAffected == 0) {
-			conn.rollback();
-			return;
+			int rowAffected = stmt.executeUpdate();
+
+			if (rowAffected == 0) {
+				conn.rollback();
+				return;
+			}
+			conn.commit();
+			stmt.close();
 		}
-		
+		cadastrarItemCarrinho(carrinho, conn);
+	}
+
+	public void cadastrarItemCarrinho(Carrinho carrinho, Connection conn) throws SQLException {
 		PreparedStatement stmtItens = conn.prepareStatement(CarrinhoQuery.INSERT_ITENS);
 		stmtItens.setInt(1, carrinho.getId());
 		stmtItens.setInt(2, carrinho.getProdutoId());
 		stmtItens.setInt(3, carrinho.getQuantidade());
-		
-		rowAffected = stmtItens.executeUpdate();
-		
+
+		int rowAffected = stmtItens.executeUpdate();
+
 		if (rowAffected == 0) {
 			conn.rollback();
 			return;
 		}
-
 		conn.commit();
 		conn.close();
-		stmt.close();
 		stmtItens.close();
 	}
-	
+
 	public void excluir(int id) throws SQLException {
 		Connection conn = Conexao.getConexao();
 
@@ -74,45 +74,58 @@ public class CarrinhoDAO {
 	public ArrayList<Carrinho> listarCarrinhos() throws SQLException {
 		Connection conn = Conexao.getConexao();
 		PreparedStatement stmt = conn.prepareStatement(CarrinhoQuery.SELECT_ALL);
-		
+
 		ResultSet rs = stmt.executeQuery();
-		
+
 		ArrayList<Carrinho> carrinhos = new ArrayList<>();
-		while(rs.next()) {
+		while (rs.next()) {
 			carrinhos.add(extract(rs));
 		}
 		rs.close();
 		stmt.close();
 		conn.close();
-		
+
 		return carrinhos;
 	}
 
-	public Carrinho consultar(int id) throws SQLException {
+	public ArrayList<ItensCarrinho> consultar(int id) throws SQLException {
 		Connection conn = Conexao.getConexao();
-		PreparedStatement stmt = conn.prepareStatement(CarrinhoQuery.SELECT_ONE);
+		PreparedStatement stmt = conn.prepareStatement(CarrinhoQuery.SELECT_ONE_ITEM);
 		stmt.setInt(1, id);
 		ResultSet rs = stmt.executeQuery();
-		
-		Carrinho carrinho = null;
+
+		ArrayList<ItensCarrinho> itensCarrinhos = new ArrayList<>();
+		ItensCarrinho item = null;
 
 		while (rs.next()) {
-			carrinho = extract(rs);
+			item = new ItensCarrinho(rs.getInt("idcarrinho"), rs.getInt("proid"), rs.getInt("quantidade"));
+			itensCarrinhos.add(item);
 		}
 
 		rs.close();
 		stmt.close();
 		conn.close();
-		return carrinho;
+		return itensCarrinhos;
 	}
-	
+
 	private Carrinho extract(ResultSet rs) throws SQLException {
-		Categoria categoria = new Categoria(rs.getInt("idcate"), rs.getString("nomecate"), 
-				rs.getString("slugcate"));
-		Produto produto = new Produto(rs.getInt("proID"), categoria, rs.getString("nome"), 
-				rs.getDouble("proaltura"), rs.getDouble("prolargura"), rs.getDouble("procompr"),
-				rs.getDouble("preco"), rs.getInt("proqntd"));
+		Categoria categoria = new Categoria(rs.getInt("idcate"), rs.getString("nomecate"), rs.getString("slugcate"));
+		Produto produto = new Produto(rs.getInt("proID"), categoria, rs.getString("nome"), rs.getDouble("proaltura"),
+				rs.getDouble("prolargura"), rs.getDouble("procompr"), rs.getDouble("preco"), rs.getInt("proqntd"));
 		Carrinho carrinho = new Carrinho(rs.getInt("idcarrinho"), produto, rs.getInt("quantidade"));
 		return carrinho;
+	}
+
+	public void setIdSession(Carrinho carrinho) throws SQLException {
+		Connection conn = Conexao.getConexao();
+		PreparedStatement stmt = conn.prepareStatement(CarrinhoQuery.LOCALIZAR_ID);
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			carrinho.setId(rs.getInt("NEXTVAL"));
+		}
+		rs.close();
+		stmt.close();
+		conn.close();
 	}
 }

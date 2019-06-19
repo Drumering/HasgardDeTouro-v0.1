@@ -39,17 +39,21 @@
 			<section>
 				<div class="widget">
 					<div class="widget-title">
-						<div class="widget-title-text">Latest Offers</div>
+						<div class="widget-title-text">Ultimas Ofertas</div>
 						<div class="widget-title-bar"></div>
 					</div>
 					<div class="widget-body flex">
 						<ui:repeat var="item" value="#{appController.listarProduto()}">
 							<article>
 								<h:form id="addItem">
-									<h:commandLink action="#{appController.cadastrarCarrinho(item, 1)}">
 										<div class="news-data">
-											<div class="news-posted-at">30 DEC 18</div>
-											<div class="news-comments">2</div>
+											<div class="news-posted-at">Apenas R$
+											<h:outputText value="#{item.preco}" />
+											</div>
+											<h:commandLink action="#{appController.cadastrarCarrinho(item, 1)}" >
+											<div class="news-comments">Comprar				
+											</div>
+											</h:commandLink>
 										</div>
 										<div class="news-thumbnail">
 											<img src="resources/images/img1.jpg" />
@@ -58,14 +62,14 @@
 											<h:outputText value="#{item.nome}" />
 										</div>
 										<div class="news-resume">
-											O melhor colchão do mundo, o mais puto com uma altura de
+											Colchão com dimensões 
 											<h:outputText value="#{item.altura}" />
-											de pura fofura e uma largura de
+											cm x
 											<h:outputText value="#{item.largura}" />
-											para a família toda. Por Apenas R$
-											<h:outputText value="#{item.preco}" />
+											cm x
+											<h:outputText value="#{item.comprimento}" />
+											cm.
 										</div>
-									</h:commandLink>
 								</h:form>
 							</article>
 						</ui:repeat>
