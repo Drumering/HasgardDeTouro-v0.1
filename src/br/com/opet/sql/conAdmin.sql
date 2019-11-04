@@ -26,4 +26,20 @@ grant connect,resource to teste with admin option;
 
 select username,default_tablespace,temporary_tablespace from dba_users;
 
+set serveroutput on
+
+DECLARE
+USEREXISTS INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO USEREXISTS FROM DBA_USERS WHERE USERNAME = 'ADMIN';
+  IF (USEREXISTS = 0) THEN
+    EXECUTE IMMEDIATE 'create user admin identified by admin default tablespace ts_integrador temporary tablespace temp_integrador';
+    EXECUTE IMMEDIATE 'grant connect,resource to admin with admin option';
+    DBMS_OUTPUT.put_line('USUARIO CRIADO E PERMISSÕES CONCEDIDAS');
+  ELSE
+    DBMS_OUTPUT.put_line('USUARIO JA EXISTE');
+  END IF;
+END;
+/
+
 commit;
