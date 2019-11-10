@@ -198,21 +198,6 @@ SELECT USER FROM DUAL;
 grant update on cliente to teste;
 
 -- PROCEDURE --
-create table cliente(
-    cliCPF varchar2(20) not null,
-    idUser number(10) not null,
-    cliNome varchar2(100) not null,
-    cliEndereco varchar2(100) not null,
-    cliNumEndereco number(10) not null,
-    cliCompleEnd varchar2(100),
-    cliCep number(8) not null,
-    cliEmail varchar2(50),
-    cliCel number(20),
-    cliTelFixo number(20),
-    constraint cliente_pk primary key(cliCPF),
-    constraint usr_cliente_fk foreign key(idUser) references usuario(idUser)
-);
-
 CREATE OR REPLACE PROCEDURE cliInsert(cliCPF varchar2,idUser number,cliNome varchar2,cliEndereco varchar2,cliNumEndereco number,cliCompleEnd varchar2,cliCep varchar2,cliEmail varchar2,cliCel number,cliTelFixo number)
 IS
 BEGIN
